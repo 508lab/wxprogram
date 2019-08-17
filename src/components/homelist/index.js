@@ -1,22 +1,29 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtCard } from "taro-ui"
+import { AtList, AtListItem } from "taro-ui"
 import './index.scss';
 export default class Index extends Taro.Component {
+    state = {
+        datasource: [],
+
+    }
     constructor() {
         super(...arguments)
-
+        this.setState({
+            datasource: this.props.data
+        })
     }
 
     render() {
+        let viewData = this.state.datasource.map((e, i) => {
+            return <AtListItem title={e.t} key={i} onClick={this.props.listClick.bind(this, e)} />
+        })
+
         return (
-            <View className="index">
-                <AtCard
-                    note="end"
-                    title='中国首个开源 HTML5 跨屏前端框架'
-                >
-                    个人评价还是可以
-                </AtCard>
+            <View class="indexview">
+                <AtList>
+                    {viewData}
+                </AtList>
             </View>
         )
     }

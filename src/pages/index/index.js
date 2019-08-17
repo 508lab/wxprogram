@@ -1,31 +1,71 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
+import { AtTabBar, AtModal } from 'taro-ui'
 import HomeTab from '../../components/hometab';
-import Warehouse from '../../data/warehouse';
+
 import './index.scss'
 
 export default class Index extends Component {
-
+  state = {
+    current: 0,
+    isOpened: false
+  }
   config = {
     navigationBarTitleText: '首页'
   }
 
-  componentWillMount() {
-    console.log(Warehouse);
+  handleClick(value) {
+    this.setState({
+      current: value
+    })
+    if (value === 1) {
+      this.setState({
+        isOpened: true
+      })
+    }
+  }
+  componentDidMount = () => {
+    this.setState({
+      isOpened: false
+    })
   }
 
-  componentDidMount() { }
+  handleCancel = () => {
+    this.setState({
+      isOpened: false
+    })
+  }
 
-  componentWillUnmount() { }
+  handleConfirm = () => {
+    this.setState({
+      isOpened: false
+    })
+  }
 
-  componentDidShow() { }
-
-  componentDidHide() { }
 
   render() {
     return (
       <View className='index'>
+        <AtModal
+          isOpened={this.state.isOpened}
+          title='508工作室'
+          cancelText='取消'
+          confirmText='确认'
+          onClose={this.handleClose}
+          onCancel={this.handleCancel}
+          onConfirm={this.handleConfirm}
+          content='此项目仅用于学习,主页：https://508lab.github.io'
+        />
         <HomeTab />
+        <AtTabBar
+          fixed
+          tabList={[
+            { title: '首页', iconType: 'home' },
+            { title: '我们', iconType: 'user' }
+          ]}
+          onClick={this.handleClick.bind(this)}
+          current={this.state.current}
+        />
       </View>
     )
   }
