@@ -24,6 +24,13 @@ export default class Index extends Component {
       })
     }
   }
+  componentWillMount = () => {
+    //设置可分享
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+  }
+
   componentDidMount = () => {
     this.setState({
       isOpened: false
