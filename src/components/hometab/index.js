@@ -27,6 +27,7 @@ export default class Index extends Taro.Component {
             current: 0,
             isOpened: false,
             nowData: null,
+            tipMsg: '复制', //不同的平台提示信息不同
             tabList: [
 
             ]
@@ -46,6 +47,13 @@ export default class Index extends Taro.Component {
         })
     }
 
+    componentWillMount = () => {
+        if (Tool.getEnv() === 'h5') {
+            this.setState({
+                tipMsg: '跳转'
+            })
+        }
+    }
     handleCancel = () => {
         this.setState({
             isOpened: false
@@ -71,7 +79,7 @@ export default class Index extends Taro.Component {
                     isOpened={this.state.isOpened}
                     title='内容'
                     cancelText='取消'
-                    confirmText='复制'
+                    confirmText={this.state.tipMsg}
                     onClose={this.handleClose}
                     onCancel={this.handleCancel}
                     onConfirm={this.handleConfirm}

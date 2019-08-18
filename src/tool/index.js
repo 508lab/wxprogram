@@ -26,7 +26,7 @@ class Tool {
         const ENV = this.getEnv();
         if (ENV === 'weapp') {
             this.wxCopyData(data.l);
-        }else if (ENV === 'H5') {
+        }else if (ENV === 'h5') {
             window.location.href = data.l;
         }
     }
