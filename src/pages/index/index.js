@@ -2,7 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtTabBar, AtModal } from 'taro-ui'
 import HomeTab from '../../components/hometab';
-
+import Tool from '../../tool/index';
 import './index.scss'
 
 export default class Index extends Component {
@@ -25,10 +25,12 @@ export default class Index extends Component {
     }
   }
   componentWillMount = () => {
-    //设置可分享
-    wx.showShareMenu({
-      withShareTicket: true
-    });
+    //如果是微信设置可分享
+    if (Tool.getEnv() === 'weapp') {
+      wx.showShareMenu({
+        withShareTicket: true
+      });
+    }
   }
 
   componentDidMount = () => {

@@ -1,7 +1,9 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtTabs, AtTabsPane, AtModal, AtMessage } from 'taro-ui'
+import { AtTabs, AtTabsPane, AtModal } from 'taro-ui'
 import HomeList from '../homelist/index';
+import Tool from '../../tool/index';
+
 /**
  * 数据
  */
@@ -58,15 +60,7 @@ export default class Index extends Taro.Component {
         this.setState({
             isOpened: false
         })
-        wx.setClipboardData({
-            data: this.state.nowData.l,
-            success: (res) => {
-                Taro.atMessage({
-                    'message': '复制成功',
-                    'type': 'success',
-                })
-            }
-        })
+        Tool.modalHandler(this.state.nowData);
     }
 
 
