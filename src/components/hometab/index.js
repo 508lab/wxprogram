@@ -20,6 +20,9 @@ import operationsData from '../../data/operations';
 import platformData from '../../data/platform';
 import securityData from '../../data/security';
 
+/**
+ * 首页tab
+ */
 export default class Index extends Taro.Component {
     constructor() {
         super(...arguments)

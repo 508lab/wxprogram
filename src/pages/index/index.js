@@ -2,28 +2,18 @@ import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtTabBar, AtModal } from 'taro-ui'
 import HomeTab from '../../components/hometab';
+import HomeFoot from '../../components/homefoot/index';
 import Tool from '../../tool/index';
 import './index.scss'
 
 export default class Index extends Component {
   state = {
-    current: 0,
     isOpened: false
   }
   config = {
     navigationBarTitleText: '首页'
   }
 
-  handleClick(value) {
-    this.setState({
-      current: value
-    })
-    if (value === 1) {
-      this.setState({
-        isOpened: true
-      })
-    }
-  }
   componentWillMount = () => {
     //如果是微信设置可分享
     if (Tool.getEnv() === 'weapp') {
@@ -66,15 +56,7 @@ export default class Index extends Component {
           content='此项目仅用于学习,主页：https://508lab.github.io'
         />
         <HomeTab />
-        <AtTabBar
-          fixed
-          tabList={[
-            { title: '首页', iconType: 'home' },
-            { title: '我们', iconType: 'user' }
-          ]}
-          onClick={this.handleClick.bind(this)}
-          current={this.state.current}
-        />
+        <HomeFoot current={0} />
       </View>
     )
   }

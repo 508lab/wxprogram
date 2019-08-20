@@ -14,7 +14,7 @@ export default [{ t: '在浏览器中使用真实环境学习新技能', l: 'htt
 { t: '百度FEX前端研发部', l: 'http://fex.baidu.com', d: '' },
 { t: '各种前端的框架与库', l: 'https://www.awesomes.cn', d: '' },
 { t: '免费压缩图', l: 'https://tinypng.com', d: '' },
-{ t: '免费CDN仓', l: 'http://www.staticfile.org', d: '' },
+{ t: '免费CDN仓库', l: 'http://www.staticfile.org', d: '' },
 { t: '图片压缩', l: 'https://squoosh.app', d: '' },
 {
     t: '浙江大学可视分析小组博客',

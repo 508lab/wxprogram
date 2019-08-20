@@ -2,6 +2,9 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtList, AtListItem } from "taro-ui"
 import './index.scss';
+/**
+ * 首页列表组件
+ */
 export default class Index extends Taro.Component {
     state = {
         datasource: [],

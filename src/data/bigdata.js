@@ -14,12 +14,12 @@ export default [{
     d: ''
 },
 {
-    t: 'Spark是为大规模数据处理而设计的快速通用的计算引',
+    t: 'Spark是为大规模数据处理而设计的快速通用的计算引擎',
     l: 'http://spark.apache.org/',
     d: ''
 },
 {
-    t: '分布式、分区、提交后复制的日志服务-Kafk',
+    t: '分布式、分区、提交后复制的日志服务-Kafka',
     l:
         'http://kafkadoc.beanmr.com/010_getting_started/01_introduction_cn.html',
     d: ''
@@ -30,7 +30,7 @@ export default [{
     d: ''
 },
 {
-    t: 'javascript全文检',
+    t: 'javascript全文检索',
     l: 'https://github.com/olivernn/lunr.js/',
     d: ''
 },

@@ -3,7 +3,7 @@
  */
 export default [
     { t: '中国首个开源 HTML5 跨屏前端框架', l: 'http://amazeui.org/', d: '' },
-    { t: '蚂蚁金服开源React组建库', l: 'https://ant.design/', d: '' },
+    { t: '蚂蚁金服开源React组件库', l: 'https://ant.design/', d: '' },
     { t: '让WebApp更接近于原生App', l: 'https://lavas.baidu.com/pwa', d: '' },
     { t: '百度的Echarts', l: 'http://www.echartsjs.com/index.html', d: '' },
     { t: 'Highcharts 是一个用纯JavaScript编写的一个图表库', l: 'https://www.highcharts.com/', d: '' },
