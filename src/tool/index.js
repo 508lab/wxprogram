@@ -22,12 +22,20 @@ class Tool {
         })
     }
 
-    modalHandler(data) {
+    /**
+     * 复制
+     * @param {*} url 
+     */
+    gloablCopy(msg, type) {
         const ENV = this.getEnv();
         if (ENV === 'weapp') {
-            this.wxCopyData(data.l);
-        }else if (ENV === 'h5') {
-            window.location.href = data.l;
+            this.wxCopyData(msg);
+        } else if (ENV === 'h5') {
+            if (type === 'url') {
+                window.location.href = msg;
+            } else if (type === 'email') {
+                alert(msg);
+            }
         }
     }
 

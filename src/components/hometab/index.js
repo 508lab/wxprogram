@@ -71,7 +71,7 @@ export default class Index extends Taro.Component {
         this.setState({
             isOpened: false
         })
-        Tool.modalHandler(this.state.nowData);
+        Tool.gloablCopy(this.state.nowData.l, 'url');
     }
 
 
