@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtTabBar, AtModal } from 'taro-ui'
+import { AtNoticebar, AtModal } from 'taro-ui'
 import HomeTab from '../../components/hometab';
 import HomeFoot from '../../components/homefoot/index';
 import Tool from '../../tool/index';
@@ -45,6 +45,9 @@ export default class Index extends Component {
   render() {
     return (
       <View className='index'>
+        <AtNoticebar icon='volume-plus' single={true} marquee={true} speed={50} close={true} >
+          目前组织中需要维护许多项目,有兴趣的同学可以联系本人(任何人都可以)
+        </AtNoticebar>
         <AtModal
           isOpened={this.state.isOpened}
           title='508工作室'
