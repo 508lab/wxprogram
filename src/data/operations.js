@@ -17,4 +17,5 @@ export default [
     { t: 'linux命令在线查询', l: 'https://wangchujiang.com/linux-command/', d: '' },
     { t: '零配置Web框架', l: 'https://zeroserver.io/', d: '' },
     { t: 'Apache OpenWhisk是一个无服务器的基于事件的编程服务和一个Apache Incubator项目', l: 'https://github.com/apache/openwhisk', d: '' },
+    { t: 'OpenFaaS - 无服务器功能变得简单', l: 'https://github.com/openfaas/faas', d: '' },
 ]

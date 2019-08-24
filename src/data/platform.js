@@ -44,4 +44,9 @@ export default [{ t: '在浏览器中使用真实环境学习新技能', l: 'htt
     l: 'https://github.com/ksky521/nodeppt',
     d: ''
 },
-{ t: 'java菜市场', l: 'https://www.javaweb.shop', d: '' }]
+{ t: 'java菜市场', l: 'https://www.javaweb.shop', d: '' },
+{ t: '吾爱破解', l: 'https://www.52pojie.cn/', d: '' },
+{ t: '智图_图片压缩在线工具_在线制作webp', l: 'https://zhitu.isux.us/', d: '' },
+{ t: 'Laravel学院', l: 'https://laravelacademy.org/', d: '' },
+{ t: '多张图片在线压缩', l: 'https://tinypng.com/', d: '' },
+]

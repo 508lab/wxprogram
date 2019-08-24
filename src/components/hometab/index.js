@@ -19,6 +19,28 @@ import effectData from '../../data/effect';
 import operationsData from '../../data/operations';
 import platformData from '../../data/platform';
 import securityData from '../../data/security';
+import PlugData from '../../data/plug';
+import OfficeData from '../../data/office';
+import BossesData from '../../data/bosses';
+
+const ListData = [
+    { data: fontData.reverse(), name: '前端' },
+    { data: backendData.reverse(), name: '后端' },
+    { data: bigdataData.reverse(), name: '大数据' },
+    { data: operationsData.reverse(), name: '运维' },
+    { data: apiData.reverse(), name: 'api文档' },
+    { data: platformData.reverse(), name: '平台与工具' },
+    { data: PlugData.reverse(), name: '插件库' },
+    { data: securityData.reverse(), name: '网络安全' },
+    { data: OfficeData.reverse(), name: '日常办公' },
+    { data: BossesData.reverse(), name: '大佬们的博客' },
+    { data: designData.reverse(), name: '设计相关' },
+    { data: crawlerData.reverse(), name: '爬虫' },
+    { data: effectData.reverse(), name: '一些好看的效果' },
+    { data: aiData.reverse(), name: 'ai' },
+    { data: awesomeData.reverse(), name: '其他' },
+]
+
 
 /**
  * 首页tab
@@ -56,6 +78,11 @@ export default class Index extends Taro.Component {
                 tipMsg: '跳转'
             })
         }
+        this.setState({
+            tabList: ListData.map((e) => {
+                return { title: e.name };
+            })
+        })
     }
     handleCancel = () => {
         this.setState({
@@ -76,6 +103,15 @@ export default class Index extends Taro.Component {
 
 
     render() {
+        let viewData = ListData.map((e, i) => {
+            return <AtTabsPane current={this.state.current} index={i} key={i}>
+                <View style='font-size:18px;text-align:center;height:100px;'>
+                    <HomeList data={e.data} listClick={this.listClick} />
+                </View>
+            </AtTabsPane>
+        })
+
+
         return (
             <View>
                 <AtModal
@@ -92,81 +128,9 @@ export default class Index extends Taro.Component {
                 <AtTabs
                     current={this.state.current}
                     scroll
-                    tabList={[
-                        { title: '前端' },
-                        { title: '后端' },
-                        { title: '大数据' },
-                        { title: '运维' },
-                        { title: '爬虫' },
-                        { title: '网络安全' },
-                        { title: '人工智能' },
-                        { title: 'API文档' },
-                        { title: '3D' },
-                        { title: '平台与工具' },
-                        { title: '设计相关' },
-                        { title: '其他' },
-                    ]}
+                    tabList={this.state.tabList}
                     onClick={this.handleClick.bind(this)}>
-                    <AtTabsPane current={this.state.current} index={0}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={fontData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={1}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={backendData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={2}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={bigdataData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={3}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={operationsData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={4}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={crawlerData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={5}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={securityData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={6}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={aiData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={7}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={apiData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={8}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={effectData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={9}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={platformData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={10}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={designData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
-                    <AtTabsPane current={this.state.current} index={11}>
-                        <View style='font-size:18px;text-align:center;height:100px;'>
-                            <HomeList data={awesomeData} listClick={this.listClick} />
-                        </View>
-                    </AtTabsPane>
+                    {viewData}
                 </AtTabs>
             </View>
         )

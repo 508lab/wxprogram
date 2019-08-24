@@ -20,4 +20,10 @@ export default [
     { t: '流程图', l: 'https://mermaidjs.github.io/#/', d: '' },
     { t: 'React Native组件库', l: 'https://github.com/GeekyAnts/NativeBase', d: '' },
     { t: '用于javascript的跨浏览器QRCode生成器', l: 'https://github.com/davidshimjs/qrcodejs', d: '' },
+    { t: 'ColorUI组件库', l: 'http://demo.color-ui.com/', d: '' },
+    { t: 'layui经典模块化前端框架', l: 'https://www.layui.com/', d: '' },
+    { t: '一个基于Material Design的CSS框架', l: 'https://github.com/Dogfalo/materialize', d: '' },
+    { t: '快速简单地创建全屏页面', l: 'https://github.com/alvarotrigo/fullpage.js', d: '' },
+    { t: '丰富实用的业务脚手架集合', l: 'http://scaffold.ant.design/#/', d: '' },
+    { t: '用于构建Microsoft Web体验的React组件', l: 'https://github.com/OfficeDev/office-ui-fabric-react', d: '' },
 ]
