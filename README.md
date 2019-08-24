@@ -7,8 +7,16 @@
 
 - #### 有兴趣一起开发的直接修改代码即可,每周我尽量合并发布一次代码
 
+- 如何打包上传h5代码
+```
+1. git checkout h5
+2. npm run build:h5
+3. 复制dist目录下所有代码到WebsiteCode项目下/themes/hexo-theme-matery/source/wxprogram
+4. 部署508网站代码即可
+```
+
 - #### 小程序二维码
     <img src="./doc/qycode.jpg" width="150px" height="150px">
 - #### H5地址
-    - 暂定...
+    - [网站](https://508lab.github.io/wxprogram)
 
