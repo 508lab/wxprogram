@@ -44,7 +44,7 @@ export default class Index extends Component {
         } else if (name === '联系我们') {
             Tool.gloablCopy('2833324528@qq.com', 'email');
         } else if (name === '内部仓库') {
-            Tool.gloablCopy('http://47.100.178.137:3000', 'url');
+            Tool.gloablCopy('http://uname.dongkji.com', 'url');
         }
     }
 
