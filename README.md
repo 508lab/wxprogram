@@ -19,5 +19,5 @@
 - #### 小程序二维码
     <img src="./doc/qycode.jpg" width="150px" height="150px">
 - #### H5地址
-    - [网站](https://508lab.github.io/wxprogram)
+    - [网站](https://www.dongkji.com/wxprogram/)
 
