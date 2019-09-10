@@ -1,0 +1,12 @@
+.index{
+    margin-bottom: 150px;
+    .at-list{
+        .at-list__item-content {
+            width:90%;
+            overflow: visible;
+        }
+        .item-content__info-title{
+            text-align: left;
+        }
+    }
+}

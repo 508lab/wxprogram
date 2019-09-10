@@ -1,20 +1,21 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtAvatar, AtGrid, AtModal } from 'taro-ui'
+import { AtAvatar, AtGrid, AtModal, AtMessage } from 'taro-ui'
 import HomeFoot from '../../components/homefoot/index';
-import Avatar from '../../img/avatar.jpg';
+import EmailCom from '../../components/emailmodal';
 import GitHubIcon from '../../img/GitHub.svg';
 import EmailIcon from '../../img/email.svg';
 import ShengIcon from '../../img/sheng.svg';
-import WebiIcon from '../../img/webicon.svg';
 import MirrorIcon from '../../img/mirror.svg';
+import Subscribe from '../../img/subscribe.svg';
 import Tool from '../../tool/index';
 import './index.scss';
 
 export default class Index extends Component {
     state = {
         isOpened: false,
-        modTip: ''
+        modTip: '',
+        emailShow: false
     }
     config = {
         navigationBarTitleText: '关于我们'
@@ -33,8 +34,6 @@ export default class Index extends Component {
         const name = item.value;
         if (name === 'GitHub') {
             Tool.gloablCopy('https://github.com/508lab', 'url');
-        } else if (name === '网站') {
-            Tool.gloablCopy('https://508lab.github.io', 'url');
         } else if (name === '声明') {
             this.setState({
                 modTip: '本项目仅用于学习\n\r请勿用于商业用途，请勿滥用，后果自负。\n\r如有侵权请立即联系本人删除。'
@@ -45,6 +44,10 @@ export default class Index extends Component {
             Tool.gloablCopy('2833324528@qq.com', 'email');
         } else if (name === '内部仓库') {
             Tool.gloablCopy('http://uname.dongkji.com', 'url');
+        } else if (name === "订阅") {
+            this.setState({
+                emailShow: true
+            })
         }
     }
 
@@ -66,10 +69,32 @@ export default class Index extends Component {
         })
     }
 
+    /**
+     * 关闭邮箱modal
+     */
+    emailModalC = () => {
+        this.setState({
+            emailShow: false
+        })
+    }
+
+    emailModalOk = (email) => {
+        let mailReg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+        if (!mailReg.test(email)) {
+            Taro.atMessage({
+                'message': '请输入正确的邮箱格式',
+                'type': "error",
+            })
+        }
+        this.setState({
+            emailShow: false
+        })
+    }
+
     render() {
         return (
             <View className="index">
-                <View className="top"><AtAvatar image={Avatar} size="large" circle={true}></AtAvatar></View>
+                <View className="top"><AtAvatar image="https://avatars0.githubusercontent.com/u/49094696?s=200&v=4" size="large" circle={true}></AtAvatar></View>
                 <View className='at-article__h1 desc'>
                     508工作室
                 </View>
@@ -79,12 +104,12 @@ export default class Index extends Component {
                 <AtGrid onClick={this.onClick} data={
                     [
                         {
-                            image: GitHubIcon,
-                            value: 'GitHub'
+                            image: Subscribe,
+                            value: '订阅'
                         },
                         {
-                            image: WebiIcon,
-                            value: '网站'
+                            image: GitHubIcon,
+                            value: 'GitHub'
                         },
                         {
                             image: MirrorIcon,
@@ -110,6 +135,9 @@ export default class Index extends Component {
                     onConfirm={this.handleConfirm}
                     content={this.state.modTip}
                 />
+                <EmailCom isOpened={this.state.emailShow} handleClose={this.emailModalC}
+                    handleConfirm={this.emailModalOk} />
+                <AtMessage />
             </View>
         )
     }

@@ -48,26 +48,26 @@ class Tool {
      * @param {*} callback 回调
      */
     httpRequestGeN(urlPath, callback) {
-        wx.request({
+        Taro.request({
             url: APIURL + urlPath,
             method: 'GET',
             success(data) {
                 if (data.data.status == 200) {
                     callback(data.data)
                 } else {
-                    wx.showToast({
-                        title: '服务器!',
-                        icon: 'none',
-                        duration: 2000
-                    })
+                    // wx.showToast({
+                    //     title: '服务器!',
+                    //     icon: 'none',
+                    //     duration: 2000
+                    // })
                 }
             },
             fail() {
-                wx.showToast({
-                    title: '网络异常!',
-                    icon: 'none',
-                    duration: 2000
-                })
+                // wx.showToast({
+                //     title: '网络异常!',
+                //     icon: 'none',
+                //     duration: 2000
+                // })
             }
         })
     }

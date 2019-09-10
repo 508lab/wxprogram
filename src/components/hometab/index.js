@@ -1,25 +1,26 @@
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtButton } from 'taro-ui'
+import { AtGrid } from 'taro-ui'
 
 
 const ListData = [
-    { name: '前端' },
-    { name: '后端' },
-    { name: 'Android' },
-    { name: '大数据' },
-    { name: '运维' },
-    { name: 'api文档' },
-    { name: '平台与工具' },
-    { name: '插件库' },
-    { name: '网络安全' },
-    { name: '日常办公' },
-    { name: '大佬们的博客' },
-    { name: '设计相关' },
-    { name: '爬虫' },
-    { name: '一些好看的效果' },
-    { name: 'ai' },
-    { name: '其他' },
+    { value: '每周推荐' },
+    { value: '前端' },
+    { value: '后端' },
+    { value: 'Android' },
+    { value: '大数据' },
+    { value: '运维' },
+    { value: 'api文档' },
+    { value: '平台与工具' },
+    { value: '插件库' },
+    { value: '网络安全' },
+    { value: '日常办公' },
+    { value: '大佬们的博客' },
+    { value: '设计相关' },
+    { value: '爬虫' },
+    { value: '一些好看的效果' },
+    { value: 'ai' },
+    { value: '其他' },
 ]
 
 /**
@@ -29,21 +30,18 @@ export default class Index extends Taro.Component {
     constructor() {
         super(...arguments)
         this.state = {
+            data: ListData
         }
     }
-    handleClick = (value) => {
+    handleClick = (item) => {
         Taro.navigateTo({
-            url: '../content/index?type=' + value
+            url: '../content/index?type=' + item.value
         })
     }
-
     render() {
-        let ViewData = ListData.map((e, i) => {
-            return <AtButton type="primary" key={i} onClick={this.handleClick.bind(this, e.name)}>{e.name}</AtButton>
-        })
         return (
             <View>
-                {ViewData}
+                <AtGrid mode='rect' data={this.state.data} onClick={this.handleClick} />
             </View>
         )
     }

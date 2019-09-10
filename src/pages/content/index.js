@@ -1,18 +1,19 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtModal, AtList, AtListItem, AtLoadMore } from 'taro-ui'
+import { AtModal, AtList, AtListItem, AtLoadMore, AtToast } from 'taro-ui'
 import Tool from '../../tool/index';
-
+import './index.scss';
 
 export default class Index extends Component {
     state = {
         isOpened: false,
         from: 0,
         data: [],
+        isOpenedLoading: false,
         nowData: null,
         status: 'more',
         type: '',
-        tipMsg: '复制', //不同的平台提示信息不同
+        tipMsg: '复制链接', //不同的平台提示信息不同
     }
     config = {
         navigationBarTitleText: '结果页'
@@ -52,10 +53,14 @@ export default class Index extends Component {
     }
 
     search = (q) => {
+        this.setState({
+            isOpenedLoading: true
+        })
         Tool.httpRequestGeN(`/warehouse/search/${q}`, (data) => {
             this.setState({
                 data: data.data,
-                status: 'noMore'
+                status: 'noMore',
+                isOpenedLoading: false
             })
         })
     }
@@ -69,11 +74,24 @@ export default class Index extends Component {
     }
 
     setData = (type) => {
-        Tool.httpRequestGeN(`/warehouse/${type}/${this.state.from}/20`, (data) => {
-            this.setState({
-                data: data.data
-            })
+        this.setState({
+            isOpenedLoading: true
         })
+        if (type === '每周推荐') {
+            Tool.httpRequestGeN(`/warehouse/`, (data) => {
+                this.setState({
+                    data: data.data,
+                    isOpenedLoading: false
+                })
+            })
+        } else {
+            Tool.httpRequestGeN(`/warehouse/${type}/${this.state.from}/20`, (data) => {
+                this.setState({
+                    data: data.data,
+                    isOpenedLoading: false
+                })
+            })
+        }
     }
 
     componentDidMount = () => {
@@ -93,7 +111,6 @@ export default class Index extends Component {
         this.setState({
             isOpened: false
         })
-
     }
 
 
@@ -144,6 +161,7 @@ export default class Index extends Component {
                     onClick={this.loadingMore.bind(this)}
                     status={this.state.status}
                 />
+                <AtToast isOpened={this.state.isOpenedLoading} text="加载中" status="loading"></AtToast>
             </View>
         )
     }
