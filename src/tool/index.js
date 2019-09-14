@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro';
 let _Tool = null;
-const APIURL = 'https://api.dongkji.com/api/v1/api';
-// const APIURL = 'http://localhost:8080/v1/api';
+// const APIURL = 'https://api.dongkji.com/api/v1/api';
+const APIURL = 'http://localhost:8080/v1/api';
 
 class Tool {
 
@@ -52,22 +52,24 @@ class Tool {
             url: APIURL + urlPath,
             method: 'GET',
             success(data) {
-                if (data.data.status == 200) {
-                    callback(data.data)
-                } else {
-                    // wx.showToast({
-                    //     title: '服务器!',
-                    //     icon: 'none',
-                    //     duration: 2000
-                    // })
-                }
+                callback(data.data)
             },
-            fail() {
-                // wx.showToast({
-                //     title: '网络异常!',
-                //     icon: 'none',
-                //     duration: 2000
-                // })
+        })
+    }
+
+    httpRequestPoN(urlPath, data, callback) {
+        Taro.request({
+            url: APIURL + urlPath,
+            method: 'POST',
+            header: {
+                "content-type": "application/json",
+            },
+            data: JSON.stringify(data),
+            success(data) {
+                callback(data.data)
+            },
+            fail(err) {
+                console.log(err);
             }
         })
     }

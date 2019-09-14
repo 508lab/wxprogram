@@ -85,6 +85,20 @@ export default class Index extends Component {
                 'message': '请输入正确的邮箱格式',
                 'type': "error",
             })
+        } else {
+            Tool.httpRequestPoN('/subscribe', { email: email }, (data) => {
+                if (data.status === 200) {
+                    Taro.atMessage({
+                        'message': '订阅成功!',
+                        'type': "success",
+                    })
+                } if (data.status === 500) {
+                    Taro.atMessage({
+                        'message': '该邮箱已订阅!',
+                        'type': "error",
+                    })
+                }
+            });
         }
         this.setState({
             emailShow: false

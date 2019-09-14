@@ -78,7 +78,7 @@ export default class Index extends Component {
             isOpenedLoading: true
         })
         if (type === '每周推荐') {
-            Tool.httpRequestGeN(`/warehouse/`, (data) => {
+            Tool.httpRequestGeN(`/warehouse`, (data) => {
                 this.setState({
                     data: data.data,
                     isOpenedLoading: false
