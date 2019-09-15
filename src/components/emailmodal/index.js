@@ -23,7 +23,7 @@ export default class Index extends Taro.Component {
         return (
             <View>
                 <AtModal isOpened={this.props.isOpened}>
-                    <AtModalHeader>标题</AtModalHeader>
+                    <AtModalHeader>订阅我们</AtModalHeader>
                     <AtModalContent>
                         <AtInput
                             name='email'
