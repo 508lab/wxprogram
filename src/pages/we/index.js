@@ -36,7 +36,7 @@ export default class Index extends Component {
             Tool.gloablCopy('https://github.com/508lab', 'url');
         } else if (name === '声明') {
             this.setState({
-                modTip: '本项目仅用于学习\n\r请勿用于商业用途，请勿滥用，后果自负。\n\r如有侵权请立即联系本人删除。'
+                modTip: '本项目仅用于学习\n\r请勿用于商业用途，请勿滥用，后果自负。\n\r部分数据来自网易云评论 \n\r如有侵权请立即联系本人删除。'
             }, () => {
                 this.showModal();
             })
@@ -108,7 +108,7 @@ export default class Index extends Component {
     render() {
         return (
             <View className="index">
-                <View className="top"><AtAvatar image="https://avatars0.githubusercontent.com/u/49094696?s=200&v=4" size="large" circle={true}></AtAvatar></View>
+                <View className="top"><AtAvatar image="https://www.dongkji.com/508logo.png" size="large" circle={true}></AtAvatar></View>
                 <View className='at-article__h1 desc'>
                     508工作室
                 </View>
@@ -139,7 +139,7 @@ export default class Index extends Component {
                         }
                     ]
                 } />
-                <HomeFoot current={1} />
+                <HomeFoot current={2} />
 
                 <AtModal
                     isOpened={this.state.isOpened}

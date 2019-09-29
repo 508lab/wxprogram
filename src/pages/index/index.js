@@ -10,6 +10,7 @@ import './index.scss'
 export default class Index extends Component {
   state = {
     value: '',
+    tip: '',
   }
   config = {
     navigationBarTitleText: '首页'
@@ -26,6 +27,20 @@ export default class Index extends Component {
         withShareTicket: true
       });
     }
+
+    Tool.httpRequestGeN(`/poetry/2833324528@qq.com`, (data) => {
+      const obj = JSON.parse(data.data[0]);
+      this.setTip(obj);
+    })
+  }
+
+  setTip = (obj) => {
+    if (Tool.getEnv() === 'weapp') {
+      this.setState({
+        tip: obj.c + '\t\t' + '   <<' + obj.a + '>>'
+      })
+    }
+
   }
 
   onChange(value) {
@@ -50,8 +65,8 @@ export default class Index extends Component {
           onChange={this.onChange.bind(this)}
           onActionClick={this.onActionClick}
         />
-        <AtNoticebar icon='volume-plus' single={true} marquee={true} speed={50} close={true} >
-          目前组织中需要维护许多项目,有兴趣的同学可以联系本人(任何人都可以)
+        <AtNoticebar icon='volume-plus' single={false} close={false} >
+          {this.state.tip}
         </AtNoticebar>
         <HomeTab />
         <HomeFoot current={0} />

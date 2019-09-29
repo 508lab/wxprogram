@@ -15,6 +15,8 @@ export default class Index extends Taro.Component {
         if (value === 0) {
             url = '../index/index';
         } else if (value === 1) {
+            url = '../news/index';
+        } else if (value === 2) {
             url = '../we/index';
         }
         Taro.redirectTo({
@@ -29,6 +31,7 @@ export default class Index extends Taro.Component {
                     fixed
                     tabList={[
                         { title: '首页', iconType: 'home' },
+                        { title: '新闻', iconType: 'eye' },
                         { title: '我们', iconType: 'user' }
                     ]}
                     onClick={this.handleClick.bind(this)}
