@@ -39,6 +39,11 @@ export default class Index extends Component {
       this.setState({
         tip: obj.c + '\t\t' + '   <<' + obj.a + '>>'
       })
+    } else if (Tool.getEnv() === 'h5') {
+      let aDom = <a href={obj.l}>{obj.c}&ensp;&ensp;《{obj.a}》</a>;
+      this.setState({
+        tip: aDom
+      })
     }
 
   }
