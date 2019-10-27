@@ -1,15 +1,20 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtTag, AtButton } from 'taro-ui';
+import { AtTag, AtLoadMore, AtToast, AtSearchBar } from 'taro-ui';
 import HomeFoot from '../../components/homefoot/index';
 import Tool from '../../tool/index';
 import './index.scss';
+const size = 5;
 
 export default class Index extends Component {
     state = {
+        searchQ: '',
         value: '',
         showTip: '复制链接',
-        data: []
+        data: [],
+        status: 'more',
+        scrollid: null,
+        isOpenedLoading: false,
     }
     config = {
         navigationBarTitleText: '新闻'
@@ -26,14 +31,18 @@ export default class Index extends Component {
                 withShareTicket: true
             });
         }
-
         this.getNews();
     }
 
     getNews = () => {
+        this.setState({
+            isOpenedLoading: true,
+        })
         Tool.httpRequestGeN(`/news`, (data) => {
             this.setState({
-                data: data.data
+                data: data.data,
+                scrollid: data.scrollid,
+                isOpenedLoading: false
             })
         })
     }
@@ -42,6 +51,45 @@ export default class Index extends Component {
         Tool.gloablCopy(url, 'url');
     }
 
+
+    loadingMore = () => {
+        this.setState({
+            isOpenedLoading: true,
+        })
+        Tool.httpRequestGeN(`/news/scroll/${this.state.scrollid}`, (data) => {
+            let oldData = this.state.data;
+            this.setState({
+                data: oldData.concat(data.data),
+                scrollid: data.scrollid,
+                isOpenedLoading: false
+            });
+            if (data.data.lenght !== size) {
+                this.setState({
+                    status: 'noMore'
+                })
+            }
+        })
+    }
+
+    searchClick = (value) => {
+        this.setState({
+            searchQ: value
+        });
+    }
+
+    onActionClick = () => {
+        this.setState({
+            isOpenedLoading: true
+        })
+        if (this.state.searchQ) {
+            Tool.httpRequestGeN(`/news/search/${this.state.searchQ}`, (data) => {
+                this.setState({
+                    data: data.data,
+                    isOpenedLoading: false
+                })
+            })
+        }
+    }
 
     render() {
         let dom = this.state.data.map((ele, index) => {
@@ -70,8 +118,18 @@ export default class Index extends Component {
         })
         return (
             <View className='index' >
+                <AtSearchBar
+                    value={this.state.searchQ}
+                    onChange={this.searchClick.bind(this)}
+                    onActionClick={this.onActionClick}
+                />
                 {dom}
+                <AtLoadMore
+                    onClick={this.loadingMore.bind(this)}
+                    status={this.state.status}
+                />
                 < HomeFoot current={1} />
+                <AtToast isOpened={this.state.isOpenedLoading} text="加载中" status="loading"></AtToast>
             </View>
         )
     }

@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtNoticebar, AtModal, AtSearchBar } from 'taro-ui'
+import { AtNoticebar, AtSearchBar } from 'taro-ui'
 import HomeTab from '../../components/hometab';
 import HomeFoot from '../../components/homefoot/index';
 import Tool from '../../tool/index';
