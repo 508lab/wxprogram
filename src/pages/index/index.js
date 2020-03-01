@@ -3,9 +3,25 @@ import { View } from '@tarojs/components'
 import { AtNoticebar, AtSearchBar } from 'taro-ui'
 import HomeTab from '../../components/hometab';
 import HomeFoot from '../../components/homefoot/index';
+import MClSwiper from "../../components/mswiper/index";
 import Tool from '../../tool/index';
 import './index.scss'
 
+
+const fileList = [
+  {
+    url: 'https://lab508.gitee.io/medias/featureimages/7.jpg',
+    type: 'image',
+    key: 1,
+    link: "https://lab508.gitee.io/"
+  },
+  {
+    url: 'https://lab508.gitee.io/medias/featureimages/15.jpg',
+    type: 'image',
+    key: 2,
+    link: "https://lab508.gitee.io/"
+  },
+]
 
 export default class Index extends Component {
   state = {
@@ -73,6 +89,7 @@ export default class Index extends Component {
         <AtNoticebar icon='volume-plus' single={false} close={false} >
           {this.state.tip}
         </AtNoticebar>
+        <MClSwiper list={fileList} />
         <HomeTab />
         <HomeFoot current={0} />
       </View>

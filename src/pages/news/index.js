@@ -63,7 +63,8 @@ export default class Index extends Component {
                 scrollid: data.scrollid,
                 isOpenedLoading: false
             });
-            if (data.data.lenght !== size) {
+            
+            if (data.data.length == 0) {
                 this.setState({
                     status: 'noMore'
                 })

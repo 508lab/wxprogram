@@ -8,6 +8,7 @@ import EmailIcon from '../../img/email.svg';
 import ShengIcon from '../../img/sheng.svg';
 import MirrorIcon from '../../img/mirror.svg';
 import Subscribe from '../../img/subscribe.svg';
+import HistoryIcon from '../../img/history.svg';
 import Tool from '../../tool/index';
 import './index.scss';
 
@@ -48,6 +49,8 @@ export default class Index extends Component {
             this.setState({
                 emailShow: true
             })
+        }else if (name === '历史邮件') {
+            Tool.gloablCopy('https://www.dongkji.com/email', 'url');
         }
     }
 
@@ -128,6 +131,10 @@ export default class Index extends Component {
                         {
                             image: MirrorIcon,
                             value: '内部仓库'
+                        },
+                        {
+                            image: HistoryIcon,
+                            value: '历史邮件'
                         },
                         {
                             image: ShengIcon,
