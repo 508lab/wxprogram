@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
-import { Swiper, SwiperItem } from '@tarojs/components'
+import { Swiper, SwiperItem, Image } from '@tarojs/components'
 
 /**
  * 首页tab
@@ -12,7 +12,7 @@ export default class Index extends Taro.Component {
     render() {
         let dom = this.props.list.map((e, index) => {
             return <SwiperItem key={e.key}>
-                <image src={e.url} style={{ width: '100%', height: '150px'}}/>
+                <Image src={e.url} style="width: 100%; height: 150px;"/>
             </SwiperItem>
         })
         return (

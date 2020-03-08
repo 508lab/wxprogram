@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro';
 let _Tool = null;
 const APIURL = 'https://api.dongkji.com/api/v1/api';
-// const APIURL = 'http://192.168.31.168:8080/v1/api';
+// const APIURL = 'http://127.0.0.1:8080/v1/api';
 
 
 
