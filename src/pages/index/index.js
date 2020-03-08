@@ -1,12 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View } from '@tarojs/components'
-import { AtNoticebar, AtModal, AtSearchBar } from 'taro-ui'
+import { AtNoticebar, AtSearchBar } from 'taro-ui'
 import HomeTab from '../../components/hometab';
 import HomeFoot from '../../components/homefoot/index';
 import MsWiper from '../../components/mswiper/index';
 import Tool from '../../tool/index';
 import './index.scss'
-
 
 
 export default class Index extends Component {
@@ -47,6 +46,11 @@ export default class Index extends Component {
     if (Tool.getEnv() === 'weapp') {
       this.setState({
         tip: obj.c + '\t\t' + '   <<' + obj.a + '>>'
+      })
+    } else if (Tool.getEnv() === 'h5') {
+      let aDom = <a href={obj.l}>{obj.c}&ensp;&ensp;《{obj.a}》</a>;
+      this.setState({
+        tip: aDom
       })
     }
 
