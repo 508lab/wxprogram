@@ -3,14 +3,17 @@ import { View } from '@tarojs/components'
 import { AtNoticebar, AtModal, AtSearchBar } from 'taro-ui'
 import HomeTab from '../../components/hometab';
 import HomeFoot from '../../components/homefoot/index';
+import MsWiper from '../../components/mswiper/index';
 import Tool from '../../tool/index';
 import './index.scss'
+
 
 
 export default class Index extends Component {
   state = {
     value: '',
     tip: '',
+    fileList: []
   }
   config = {
     navigationBarTitleText: '首页'
@@ -31,6 +34,12 @@ export default class Index extends Component {
     Tool.httpRequestGeN(`/poetry/2833324528@qq.com`, (data) => {
       const obj = JSON.parse(data.data[0]);
       this.setTip(obj);
+    })
+
+    Tool.httpRequestGeN(`/banner`, (data) => {
+      this.setState({
+        fileList: data.data
+      })
     })
   }
 
@@ -68,6 +77,7 @@ export default class Index extends Component {
         <AtNoticebar icon='volume-plus' single={false} close={false} >
           {this.state.tip}
         </AtNoticebar>
+        <MsWiper list={this.state.fileList}/>
         <HomeTab />
         <HomeFoot current={0} />
       </View>
