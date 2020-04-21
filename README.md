@@ -12,5 +12,4 @@
 - #### 小程序二维码
     <img src="./doc/qycode.jpg" width="150px" height="150px">
 - #### H5地址
-    - [网站](https://www.dongkji.com/h5)
-
+    - [~~网站暂停维护~~](https://www.dongkji.com/h5)
